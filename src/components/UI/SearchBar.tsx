@@ -18,9 +18,9 @@ const TopBarContainer = styled("div")`
 
   position: absolute;
   /* including Results width */
-  left: 380px;
+  left: 303px;
   right: 80px;
-  top: 20px;
+  top: 14px;
   z-index: 500;
 
   @media (max-width: 980px) {
@@ -46,13 +46,16 @@ const SearchBarContainer = styled("div")`
   display: flex;
   justify-content: center;
   z-index: 1000;
-
   flex: 1;
+  max-width: 584px;
+  height: 48px;
 `;
 
 const SearchBarContainerInner = styled("div")`
   width: 100%;
   position: relative;
+  height: 48px;
+  max-width: 584px;
 `;
 
 type SearchBarProps = {
@@ -78,19 +81,25 @@ export default ({ setLocation }: SearchBarProps) => {
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <SearchBarContainer>
             <SearchBarContainerInner>
+              <img
+                className="search-icon"
+                alt="search"
+                style={{ width: 24 }}
+                src={require("../../assets/images/search@3x.png")}
+              />
               <form>
                 <InputGroup>
                   <FormControl
                     id="location"
-                    placeholder="Enter a Zip Code, Neighborhood and City, or Full Address"
+                    placeholder="Enter Charity Name, Address, City, or Zip Code"
                     {...getInputProps()}
                   />
-                  <InputGroup.Append>
+                  {/* <InputGroup.Append>
                     <Button variant="info">Search</Button>
-                  </InputGroup.Append>
+                  </InputGroup.Append> */}
                 </InputGroup>
 
-                <Suggestions>
+                <Suggestions className="suggestions">
                   {!loading &&
                     suggestions.map((suggestion) => (
                       <Suggestion

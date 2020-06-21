@@ -51,7 +51,14 @@ export default () => (
         <IoMdMenu />
       </MobileMenu>
 
-      <ButtonsContainer>
+      <ButtonsContainer
+      style={{
+        display: "flex",
+        justifyContent: "space-around",
+        width: "300",
+      }}
+      className="btns-container"
+      >
         <AboutInfoPopover title="About">
           <p>
             Darcie is an automated phone line anyone can call to find human
