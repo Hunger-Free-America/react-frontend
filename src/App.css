@@ -90,6 +90,23 @@ em {
   font-weight: bold;
   text-decoration: underline;
 }
+.pop-over-aboutus{
+  max-width: 542px !important;
+}
+.pop-over-aboutus .popover-header, .pop-over-contactus .popover-header{
+  /* font-family: RedHatDisplay; */
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.36px;
+  color: #333f48;
+  padding: 46px 40px 14px 40px;
+}
+.pop-over-aboutus .popover-body, .pop-over-contactus .popover-body{
+  padding: 0px 40px;
+}
 
 .search-container {
   position: relative;
@@ -147,7 +164,51 @@ em {
   flex-grow: 0;
   margin-bottom: 8px;
 }
+@media(max-width: 400px) {
+    .search-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .search-container .left-panel>img{
+      position: relative;
+    }
+    .search-container > div:first-child{
+      position: relative;
+      height: auto !important;
+    }
+    .btns-container{
+      background: transparent;
+    }
+    .left-panel+div>div:last-child{
+      top: 0px;
+      right: 0px;
+      position: fixed;
+      margin-left: 0px;
+      transform: translateX(91%);
+      background: #024172;
+  }
 
+    .search-container>.nav>div:nth-child(1),
+    .search-container>.nav>div:nth-child(2) {
+        flex-basis: 100%;
+        position: relative;
+        left: 0px;
+        top: 0px;
+        background: transparent;
+        height: auto;
+        padding: 0px 0px 14px 0px;
+    }
+    .search-container>.nav>div:nth-child(2){
+      padding: 0px 14px;
+    }
+
+    .search-container .left-panel>img {
+        position: relative;
+        width: 87px !important;
+        float: left;
+        margin-left: 14px;
+    }
+}
 #searchbox,
 #stats {
   flex-grow: 0;

@@ -84,6 +84,7 @@ export default ({ defaultLocation }: Map) => {
           )}
 
           <div className="search-container">
+          <div className="nav">
             <ResultsList className="left-panel">
               <img
                 alt="Project Ending Hunger Logo"
@@ -95,6 +96,7 @@ export default ({ defaultLocation }: Map) => {
             </ResultsList>
 
             <SearchBar setLocation={setLocation} />
+          </div>
 
             <div className="right-panel">
               <div id="map">

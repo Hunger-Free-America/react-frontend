@@ -9,6 +9,7 @@ const MenuContainer = styled("div")`
 
   @media (max-width: 400px) {
     top: 80px;
+    position: absolute;
   }
 `;
 
@@ -20,7 +21,7 @@ const MobileMenu = styled("div")`
 
 const ButtonsContainer = styled("div")`
   @media (max-width: 400px) {
-    position: fixed;
+    // position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -59,7 +60,7 @@ export default () => (
       }}
       className="btns-container"
       >
-        <AboutInfoPopover title="About">
+        <AboutInfoPopover title="About Us" name="aboutus">
           <p>
             Darcie is an automated phone line anyone can call to find human
             services near them, such as free food, legal assistance,
@@ -81,7 +82,7 @@ export default () => (
             accordingly.
           </p>
         </AboutInfoPopover>
-        <InfoPopover title="Contact">
+        <InfoPopover title="Contact" name="contactus">
           <p>
             Contributing, Branching, & Forking While we actively accept help, as
             well as encourage you to fork this repo and build it out for your
