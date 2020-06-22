@@ -52,12 +52,12 @@ export default () => (
       </MobileMenu>
 
       <ButtonsContainer
-      style={{
-        display: "flex",
-        justifyContent: "space-around",
-        width: "300",
-      }}
-      className="btns-container"
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          width: "300",
+        }}
+        className="btns-container"
       >
         <AboutInfoPopover title="About">
           <p>
