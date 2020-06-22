@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Button, Overlay, Popover } from "react-bootstrap";
 import styled from "styled-components";
 
@@ -19,7 +19,8 @@ interface IProps {
 const InfoPopover: React.FC<IProps> = (props) => {
   const { style, title } = props;
   const [show, setShow] = useState(false);
-  const [target, setTarget] = useState();
+  const [target, setTarget] = useState(null);
+  // const target = useRef(null);
 
   const handleClick = (event: any) => {
     setShow(!show);

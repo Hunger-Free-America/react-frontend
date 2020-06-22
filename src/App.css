@@ -94,7 +94,55 @@ em {
 .search-container {
   position: relative;
 }
-
+.search-container .left-panel>img{
+  position: absolute;
+  left: 30px;
+}
+.search-container > div:first-child {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  left: 0px;
+  background-color: #024172;
+  padding: 14px 0px;
+  height: 76px;
+}
+.search-container form input {
+  max-width: 584px !important;
+  height: 48px;
+  border-radius: 23px;
+  border: solid 1px #979797;
+  background-color: #fafafa;
+  padding-left: 40px;
+}
+.search-container .search-icon {
+  top: 13px;
+  width: 24px;
+  position: absolute;
+  left: 10px;
+  z-index: 999;
+}
+.search-container .suggestions {
+  border: none;
+}
+.btns-container button{
+    background: transparent;
+    border: none;
+    /* font-family: RedHatDisplay; */
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    text-transform: uppercase;
+    padding-top: 13px;
+}
+.btns-container{
+  width: 300px;
+}
+.btns-container button:active, .btns-container button:hover{
+  background: transparent !important;
+  border: none;
+}
 #searchbox {
   flex-grow: 0;
   margin-bottom: 8px;
