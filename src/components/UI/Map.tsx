@@ -84,6 +84,9 @@ export default ({ defaultLocation }: Map) => {
           )}
 
           <div className="search-container">
+
+            <SearchBar setLocation={setLocation} />
+
             <ResultsList className="left-panel">
               <img
                 alt="Project Ending Hunger Logo"
@@ -93,9 +96,7 @@ export default ({ defaultLocation }: Map) => {
 
               <Hits hitComponent={HitComponent} />
             </ResultsList>
-
-            <SearchBar setLocation={setLocation} />
-
+            
             <div className="right-panel">
               <div id="map">
                 <GeoSearch
