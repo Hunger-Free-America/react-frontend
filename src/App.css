@@ -173,11 +173,14 @@ em {
       position: relative;
     }
     .search-container > div:first-child{
-      position: relative;
+      position: fixed;
       height: auto !important;
+      top: 0px;
+      left: 0px;
+      z-index: 99;
     }
     .btns-container{
-      background: transparent;
+      background: transparent !important;
     }
     .left-panel+div>div:last-child{
       top: 0px;
@@ -186,6 +189,9 @@ em {
       margin-left: 0px;
       transform: translateX(91%);
       background: #024172;
+  }
+  .left-panel+div>div:last-child svg{
+    color: white !important;
   }
 
     .search-container>.nav>div:nth-child(1),
