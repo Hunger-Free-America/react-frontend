@@ -5,6 +5,8 @@ import styled from "styled-components";
 const ButtonContainer = styled("div")``;
 
 const StyledButton = styled(Button)`
+  color: #262626;
+
   @media (max-width: 400px) {
     width: 100%;
     margin-bottom: 20px;
