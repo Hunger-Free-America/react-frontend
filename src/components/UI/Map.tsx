@@ -97,7 +97,6 @@ export default ({ defaultLocation }: Map) => {
 
             <SearchBar setLocation={setLocation} />
           </div>
-
             <div className="right-panel">
               <div id="map">
                 <GeoSearch
