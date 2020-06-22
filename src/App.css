@@ -94,19 +94,17 @@ em {
 .search-container {
   position: relative;
 }
-.search-container .left-panel>img{
-  position: absolute;
-  left: 30px;
-}
+
 .search-container > div:first-child {
+  background-color: #ffffff;
+  height: 76px;
+  left: 0px;
+  padding: 14px 0px;
   position: fixed;
   top: 0px;
   width: 100%;
-  left: 0px;
-  background-color: #024172;
-  padding: 14px 0px;
-  height: 76px;
 }
+
 .search-container form input {
   max-width: 584px !important;
   height: 48px;
@@ -115,6 +113,7 @@ em {
   background-color: #fafafa;
   padding-left: 40px;
 }
+
 .search-container .search-icon {
   top: 13px;
   width: 24px;
@@ -122,27 +121,33 @@ em {
   left: 10px;
   z-index: 999;
 }
+
 .search-container .suggestions {
   border: none;
 }
-.btns-container button{
-    background: transparent;
-    border: none;
-    /* font-family: RedHatDisplay; */
-    font-size: 16px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    text-transform: uppercase;
-    padding-top: 13px;
+
+.btns-container button {
+  background: transparent;
+  border: none;
+  /* font-family: RedHatDisplay; */
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  text-transform: uppercase;
+  padding-top: 13px;
 }
-.btns-container{
+
+.btns-container {
   width: 300px;
 }
-.btns-container button:active, .btns-container button:hover{
+
+.btns-container button:active,
+.btns-container button:hover {
   background: transparent !important;
   border: none;
 }
+
 #searchbox {
   flex-grow: 0;
   margin-bottom: 8px;
@@ -151,15 +156,6 @@ em {
 #searchbox,
 #stats {
   flex-grow: 0;
-}
-
-.ais-Hits-item,
-.ais-SearchBox-input {
-  height: auto;
-  background: #fff;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-  list-style: none;
 }
 
 .ais-SearchBox-input:focus {
@@ -242,8 +238,9 @@ em {
 }
 
 .ais-Hits-item {
-  margin-bottom: 24px;
-  padding: 16px;
+  border-bottom: 1px solid lightgray;
+  padding: 20px 30px;
+  text-align: left;
 }
 
 .ais-Hits-item .hit-airport-code,
@@ -254,8 +251,7 @@ em {
 
 .ais-Hits-item .hit-name {
   font-size: 16px;
-  font-weight: normal;
-  text-transform: uppercase;
+  font-weight: bolder;
   margin-bottom: 8px;
 }
 
@@ -267,6 +263,14 @@ em {
 
 .ais-Hits-item:last-child {
   margin-bottom: 0;
+}
+
+.ais-Hits-item,
+.ais-SearchBox-input {
+  height: auto;
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  list-style: none;
 }
 
 #map {
