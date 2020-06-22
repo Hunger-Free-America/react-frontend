@@ -5,15 +5,18 @@ import PlacesAutocomplete, {
   getLatLng,
 } from "react-places-autocomplete";
 
-import { InputGroup, FormControl, Button } from "react-bootstrap";
 import styled from "styled-components";
+import { InputGroup, FormControl } from "react-bootstrap";
 
+import searchIcon from "../../assets/images/search@3x.png";
+import logo from  "../../assets/images/ProjectEndingHunger.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { SetLocation } from "./types";
 import Menu from "./Menu";
 
 const TopBarContainer = styled("div")`
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   display: flex;
 
   position: absolute;
@@ -21,7 +24,7 @@ const TopBarContainer = styled("div")`
   left: 303px;
   right: 80px;
   top: 14px;
-  z-index: 500;
+  z-index: 1000;
 
   @media (max-width: 980px) {
     left: 20px;
@@ -42,7 +45,7 @@ const Suggestion = styled("div")`
   cursor: pointer;
 `;
 
-const SearchBarContainer = styled("div")`
+const NavigationBar = styled("div")`
   display: flex;
   justify-content: center;
   z-index: 1000;
@@ -51,11 +54,18 @@ const SearchBarContainer = styled("div")`
   height: 48px;
 `;
 
-const SearchBarContainerInner = styled("div")`
+const SearchBar = styled("div")`
+  border-radius: 23px;
   width: 100%;
   position: relative;
   height: 48px;
   max-width: 584px;
+`;
+
+const BrandLogo = styled("img")`
+  margin-left: 25px;
+  margin-right: 99px;
+  width: 160px;
 `;
 
 type SearchBarProps = {
@@ -73,19 +83,20 @@ export default ({ setLocation }: SearchBarProps) => {
 
   return (
     <TopBarContainer>
+      <BrandLogo alt="Project Ending Hunger Logo" src={logo} />
       <PlacesAutocomplete
         value={locationSearch}
         onChange={setLocationSearch}
         onSelect={handleSelect}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <SearchBarContainer>
-            <SearchBarContainerInner>
+          <NavigationBar>
+            <SearchBar>
               <img
                 className="search-icon"
                 alt="search"
                 style={{ width: 24 }}
-                src={require("../../assets/images/search@3x.png")}
+                src={searchIcon}
               />
               <form>
                 <InputGroup>
@@ -111,8 +122,8 @@ export default ({ setLocation }: SearchBarProps) => {
                     ))}
                 </Suggestions>
               </form>
-            </SearchBarContainerInner>
-          </SearchBarContainer>
+            </SearchBar>
+          </NavigationBar>
         )}
       </PlacesAutocomplete>
       <Menu />
