@@ -8,10 +8,33 @@ import {
   Marker as OriginalMarker,
 } from "react-instantsearch-dom-maps";
 import styled from "styled-components";
+import { Button } from "react-bootstrap";
 
 import SearchBar from "./SearchBar";
 import { Location } from "./types";
-import Menu from "./Menu";
+
+const FilterButton = styled(Button)`
+  background-color: #fafafa;
+  border: solid 1px #979797;
+  border-radius: 23px;
+  color: #262626;
+  font-weight: bolder;
+  height: 40px;
+  text-transform: uppercase;
+  width: 122px;
+`;
+
+const MapContainer = styled("div")`
+  height: calc(100vh - 76px);
+  width: 100vw;
+
+  @media (min-width: 980px) {
+    position: absolute;
+    right: 0;
+    top: 76px;
+    width: calc(100vw -  430px);
+  }
+`;
 
 const Marker = styled(OriginalMarker)`
   height: 100px;
@@ -20,24 +43,19 @@ const Marker = styled(OriginalMarker)`
 `;
 
 const ResultsList = styled("div")`
-  position: absolute;
-  left: 20px;
-  top: 20px;
-  z-index: 500;
-  width: 340px;
+  display: none;
 
-  background: white;
-  padding: 20px;
-
-  height: calc(100vh - 120px);
-  overflow: scroll;
-
-  @media (max-width: 980px) {
-    top: 80px;
-  }
-
-  @media (max-width: 400px) {
-    top: 80px;
+  @media (min-width: 980px) {
+    background: white;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
+    display: block;
+    height: calc(100vh - 76px);
+    left: 0;
+    overflow: scroll;
+    position: absolute;
+    top: 76px;
+    width: 430px;
+    z-index: 500;
   }
 `;
 
@@ -53,11 +71,25 @@ type Map = {
 
 type THitComponent = {
   hit: {
-    siteName?: string;
+    city?: string;
+    name?: string;
+    state?: string;
+    streetAddress?: string;
+    zip?: string;
   };
 };
 
-const HitComponent = ({ hit }: THitComponent) => <div>{hit.siteName}</div>;
+const getAddress = (hit: any) => {
+  const { city, streetAddress } = hit;
+  return [streetAddress, city].join(", ");
+};
+
+const HitComponent = ({ hit }: THitComponent) => (
+  <>
+    <div className="hit-name">{hit.name}</div>
+    <div>{getAddress(hit)}</div>
+  </>
+);
 
 export default ({ defaultLocation }: Map) => {
   const [location, setLocation] = useState<Location>(
@@ -88,35 +120,30 @@ export default ({ defaultLocation }: Map) => {
             <SearchBar setLocation={setLocation} />
 
             <ResultsList className="left-panel">
-              <img
-                alt="Project Ending Hunger Logo"
-                style={{ width: 160 }}
-                src={require("../../assets/images/ProjectEndingHunger.png")}
-              />
-
+              <div className="ais-Hits-item">
+                <FilterButton>Filter</FilterButton>
+              </div>
               <Hits hitComponent={HitComponent} />
             </ResultsList>
             
-            <div className="right-panel">
-              <div id="map">
-                <GeoSearch
-                  google={google}
-                  zoomControlOptions={{
-                    position: google.maps.ControlPosition.RIGHT_TOP,
-                  }}
-                  streetViewControl={true}
-                >
-                  {({ hits }) => (
-                    <div>
-                      <Control />
-                      {hits.map((hit) => (
-                        <Marker key={hit.objectID} hit={hit} />
-                      ))}
-                    </div>
-                  )}
-                </GeoSearch>
-              </div>
-            </div>
+            <MapContainer className="right-panel">
+              <GeoSearch
+                google={google}
+                zoomControlOptions={{
+                  position: google.maps.ControlPosition.RIGHT_TOP,
+                }}
+                streetViewControl={true}
+              >
+                {({ hits }) => (
+                  <div>
+                    <Control />
+                    {hits.map((hit) => (
+                      <Marker key={hit.objectID} hit={hit} />
+                    ))}
+                  </div>
+                )}
+              </GeoSearch>
+            </MapContainer>
           </div>
         </InstantSearch>
       )}

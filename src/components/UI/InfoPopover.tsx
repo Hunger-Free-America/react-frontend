@@ -1,10 +1,22 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Button, Overlay, Popover } from "react-bootstrap";
 import styled from "styled-components";
 
 const ButtonContainer = styled("div")``;
 
 const StyledButton = styled(Button)`
+  background: transparent;
+  border-radius: 23px;
+  color: #262626;
+  padding-top: 9px;
+
+  &:active, &:focus, &:hover {
+    background: #f6f6f6;
+    border: none;
+    color: #000000;
+    height: 40px;
+  }
+
   @media (max-width: 400px) {
     width: 100%;
     margin-bottom: 20px;
@@ -20,7 +32,6 @@ const InfoPopover: React.FC<IProps> = (props) => {
   const { style, title } = props;
   const [show, setShow] = useState(false);
   const [target, setTarget] = useState(null);
-  // const target = useRef(null);
 
   const handleClick = (event: any) => {
     setShow(!show);

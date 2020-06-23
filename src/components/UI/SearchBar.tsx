@@ -5,57 +5,66 @@ import PlacesAutocomplete, {
   getLatLng,
 } from "react-places-autocomplete";
 
-import { InputGroup, FormControl, Button } from "react-bootstrap";
 import styled from "styled-components";
+import { InputGroup, FormControl } from "react-bootstrap";
 
+import searchIcon from "../../assets/images/search@3x.png";
+import logo from  "../../assets/images/ProjectEndingHunger.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { SetLocation } from "./types";
 import Menu from "./Menu";
 
 const TopBarContainer = styled("div")`
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   display: flex;
-
+  background-color: #ffffff;
+  height: 76px;
+  padding: 14px 25px;
   position: absolute;
-  /* including Results width */
-  left: 303px;
-  right: 80px;
-  top: 14px;
-  z-index: 500;
-
-  @media (max-width: 980px) {
-    left: 20px;
-  }
+  top: 0px;
+  width: 100%;
+  z-index: 1000;
 `;
 
 const Suggestions = styled("div")`
+  border-radius: 0 0 10px 10px;
   position: absolute;
-  border: 1px solid gray;
   z-index: 1000;
   background: white;
   width: 100%;
 `;
 
 const Suggestion = styled("div")`
-  border-bottom: 1px solid gray;
-  padding: 5px;
+  border-bottom: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
   cursor: pointer;
+  padding: 5px;
+
+  &:last-child {
+    border-radius: 0 0 10px 10px;
+  }
 `;
 
-const SearchBarContainer = styled("div")`
+const NavigationBar = styled("div")`
   display: flex;
+  flex: 1;
   justify-content: center;
   z-index: 1000;
-  flex: 1;
-  max-width: 584px;
   height: 48px;
 `;
 
-const SearchBarContainerInner = styled("div")`
-  width: 100%;
-  position: relative;
+const SearchBar = styled("div")`
+  border-radius: 23px;
   height: 48px;
   max-width: 584px;
+  position: relative;
+  width: 100%;
+`;
+
+const BrandLogo = styled("img")`
+  width: 160px;
 `;
 
 type SearchBarProps = {
@@ -73,19 +82,20 @@ export default ({ setLocation }: SearchBarProps) => {
 
   return (
     <TopBarContainer>
+      <BrandLogo alt="Project Ending Hunger Logo" src={logo} />
       <PlacesAutocomplete
         value={locationSearch}
         onChange={setLocationSearch}
         onSelect={handleSelect}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <SearchBarContainer>
-            <SearchBarContainerInner>
+          <NavigationBar>
+            <SearchBar>
               <img
                 className="search-icon"
                 alt="search"
                 style={{ width: 24 }}
-                src={require("../../assets/images/search@3x.png")}
+                src={searchIcon}
               />
               <form>
                 <InputGroup>
@@ -111,8 +121,8 @@ export default ({ setLocation }: SearchBarProps) => {
                     ))}
                 </Suggestions>
               </form>
-            </SearchBarContainerInner>
-          </SearchBarContainer>
+            </SearchBar>
+          </NavigationBar>
         )}
       </PlacesAutocomplete>
       <Menu />
