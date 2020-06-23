@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { IoMdMenu } from "react-icons/all";
 
 const MenuContainer = styled("div")`
-  display: "flex";
+  display: flex;
   justify-content: space-between;
   margin-left: 20px;
 
@@ -24,6 +24,15 @@ const ButtonsContainer = styled("div")`
   display: flex;
   justify-content: space-around;
   width: 355px;
+
+  & button {
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    text-transform: uppercase;
+  }
 
   @media (max-width: 400px) {
     position: fixed;

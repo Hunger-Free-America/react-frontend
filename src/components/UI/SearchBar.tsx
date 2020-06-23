@@ -18,39 +18,40 @@ import Menu from "./Menu";
 const TopBarContainer = styled("div")`
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   display: flex;
-
+  background-color: #ffffff;
+  height: 76px;
+  padding: 14px 25px;
   position: absolute;
-  /* including Results width */
-  left: 303px;
-  right: 80px;
-  top: 14px;
+  top: 0px;
+  width: 100%;
   z-index: 1000;
-
-  @media (max-width: 980px) {
-    left: 20px;
-  }
 `;
 
 const Suggestions = styled("div")`
+  border-radius: 0 0 10px 10px;
   position: absolute;
-  border: 1px solid gray;
   z-index: 1000;
   background: white;
   width: 100%;
 `;
 
 const Suggestion = styled("div")`
-  border-bottom: 1px solid gray;
-  padding: 5px;
+  border-bottom: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
   cursor: pointer;
+  padding: 5px;
+
+  &:last-child {
+    border-radius: 0 0 10px 10px;
+  }
 `;
 
 const NavigationBar = styled("div")`
   display: flex;
+  flex: 1;
   justify-content: center;
   z-index: 1000;
-  flex: 1;
-  max-width: 584px;
   height: 48px;
 `;
 
@@ -63,8 +64,6 @@ const SearchBar = styled("div")`
 `;
 
 const BrandLogo = styled("img")`
-  margin-left: 25px;
-  margin-right: 99px;
   width: 160px;
 `;
 
