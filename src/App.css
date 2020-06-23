@@ -126,26 +126,17 @@ em {
   border: none;
 }
 
+.btns-container {
+  width: 300px;
+}
+
 .btns-container button {
-  background: transparent;
   border: none;
-  /* font-family: RedHatDisplay; */
   font-size: 16px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   text-transform: uppercase;
-  padding-top: 13px;
-}
-
-.btns-container {
-  width: 300px;
-}
-
-.btns-container button:active,
-.btns-container button:hover {
-  background: transparent !important;
-  border: none;
 }
 
 #searchbox {
@@ -239,7 +230,7 @@ em {
 
 .ais-Hits-item {
   border-bottom: 1px solid lightgray;
-  padding: 20px 30px;
+  padding: 17.5px 30px;
   text-align: left;
 }
 
@@ -271,10 +262,6 @@ em {
   background: #fff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   list-style: none;
-}
-
-#map {
-  height: 100vh;
 }
 
 .ais-Maps {
