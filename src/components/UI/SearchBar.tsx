@@ -19,12 +19,14 @@ const TopBarContainer = styled("div")`
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   background-color: #ffffff;
-  height: 76px;
   padding: 14px 25px;
   position: absolute;
   top: 0px;
   width: 100%;
   z-index: 1000;
+  @media (max-width: 400px) {
+    height: 120px;
+  }
 `;
 
 const Suggestions = styled("div")`
@@ -53,6 +55,11 @@ const NavigationBar = styled("div")`
   justify-content: center;
   z-index: 1000;
   height: 48px;
+  @media (max-width: 400px) {
+    position: relative;
+    top: 50px;
+    min-width: 100%;
+  }
 `;
 
 const SearchBar = styled("div")`
@@ -65,6 +72,10 @@ const SearchBar = styled("div")`
 
 const BrandLogo = styled("img")`
   width: 160px;
+  @media (max-width: 400px) {
+    position: absolute;
+    width: 87px;
+  }
 `;
 
 type SearchBarProps = {

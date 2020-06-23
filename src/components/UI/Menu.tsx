@@ -7,11 +7,10 @@ import { IoMdMenu } from "react-icons/all";
 const MenuContainer = styled("div")`
   display: flex;
   justify-content: space-between;
-  margin-left: 20px;
+  margin-left: 0px;
 
   @media (max-width: 400px) {
     top: 80px;
-    position: absolute;
   }
 `;
 
@@ -36,14 +35,14 @@ const ButtonsContainer = styled("div")`
   }
 
   @media (max-width: 400px) {
-    // position: fixed;
-    top: 0;
+    position: fixed;
+    top: 120px;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 1000;
 
-    background: transparent;
+    background: white;
     padding: 20px;
   }
 `;
@@ -77,7 +76,7 @@ export default () => (
     <ButtonsContainer
       className="btns-container"
     >
-      <AboutInfoPopover title="About Us" name="aboutus">
+      <AboutInfoPopover title="About" name="aboutus">
         <p>
           Darcie is an automated phone line anyone can call to find human
           services near them, such as free food, legal assistance,
@@ -99,7 +98,7 @@ export default () => (
           accordingly.
         </p>
       </AboutInfoPopover>
-      <InfoPopover title="Contact" name="contactus">
+      <InfoPopover title="Contact" name="contact">
         <p>
           Contributing, Branching, & Forking While we actively accept help, as
           well as encourage you to fork this repo and build it out for your

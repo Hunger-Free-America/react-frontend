@@ -43,32 +43,19 @@ const Marker = styled(OriginalMarker)`
 `;
 
 const ResultsList = styled("div")`
-  position: absolute;
-  left: 20px;
-  top: 20px;
-  z-index: 500;
-  width: 340px;
+  display: none;
 
-  // background: white;
-  // padding: 20px;
-
-  // height: calc(100vh - 120px);
-  // overflow: scroll;
-
-
-  @media (max-width: 400px) {
-    top: 80px;
-  }
-`;
-
-const MapCont = styled("div")`
-  height: calc(100vh - 76px);
-  position: relative;
-  top: 76px;
-
-  @media (max-width: 400px) {
-    height: calc(100vh - 115px);
-    top: 115px;
+  @media (min-width: 980px) {
+    background: white;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
+    display: block;
+    height: calc(100vh - 76px);
+    left: 0;
+    overflow: scroll;
+    position: absolute;
+    top: 76px;
+    width: 430px;
+    z-index: 500;
   }
 `;
 
@@ -129,7 +116,9 @@ export default ({ defaultLocation }: Map) => {
           )}
 
           <div className="search-container">
-          <div className="nav">
+
+            <SearchBar setLocation={setLocation} />
+
             <ResultsList className="left-panel">
               <div className="ais-Hits-item">
                 <FilterButton>Filter</FilterButton>
@@ -137,27 +126,23 @@ export default ({ defaultLocation }: Map) => {
               <Hits hitComponent={HitComponent} />
             </ResultsList>
             
-            <SearchBar setLocation={setLocation} />
-          </div>
             <MapContainer className="right-panel">
-              <MapCont id="map">
-                <GeoSearch
-                  google={google}
-                  zoomControlOptions={{
-                    position: google.maps.ControlPosition.RIGHT_TOP,
-                  }}
-                  streetViewControl={true}
-                >
-                  {({ hits }) => (
-                    <div>
-                      <Control />
-                      {hits.map((hit) => (
-                        <Marker key={hit.objectID} hit={hit} />
-                      ))}
-                    </div>
-                  )}
-                </GeoSearch>
-              </MapCont>
+              <GeoSearch
+                google={google}
+                zoomControlOptions={{
+                  position: google.maps.ControlPosition.RIGHT_TOP,
+                }}
+                streetViewControl={true}
+              >
+                {({ hits }) => (
+                  <div>
+                    <Control />
+                    {hits.map((hit) => (
+                      <Marker key={hit.objectID} hit={hit} />
+                    ))}
+                  </div>
+                )}
+              </GeoSearch>
             </MapContainer>
           </div>
         </InstantSearch>
