@@ -26,11 +26,11 @@ const ResultsList = styled("div")`
   z-index: 500;
   width: 340px;
 
-  background: white;
-  padding: 20px;
+  // background: white;
+  // padding: 20px;
 
-  height: calc(100vh - 120px);
-  overflow: scroll;
+  // height: calc(100vh - 120px);
+  // overflow: scroll;
 
   @media (max-width: 980px) {
     top: 80px;
@@ -38,6 +38,17 @@ const ResultsList = styled("div")`
 
   @media (max-width: 400px) {
     top: 80px;
+  }
+`;
+
+const MapCont = styled("div")`
+  height: calc(100vh - 76px);
+  position: relative;
+  top: 76px;
+
+  @media (max-width: 400px) {
+    height: calc(100vh - 115px);
+    top: 115px;
   }
 `;
 
@@ -98,7 +109,7 @@ export default ({ defaultLocation }: Map) => {
             <SearchBar setLocation={setLocation} />
           </div>
             <div className="right-panel">
-              <div id="map">
+              <MapCont id="map">
                 <GeoSearch
                   google={google}
                   zoomControlOptions={{
@@ -115,7 +126,7 @@ export default ({ defaultLocation }: Map) => {
                     </div>
                   )}
                 </GeoSearch>
-              </div>
+              </MapCont>
             </div>
           </div>
         </InstantSearch>

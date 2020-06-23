@@ -90,8 +90,8 @@ em {
   font-weight: bold;
   text-decoration: underline;
 }
-.pop-over-aboutus{
-  max-width: 542px !important;
+body>.pop-over-aboutus{
+  max-width: 542px;
 }
 .pop-over-aboutus .popover-header, .pop-over-contactus .popover-header{
   /* font-family: RedHatDisplay; */
@@ -125,7 +125,7 @@ em {
   height: 76px;
 }
 .search-container form input {
-  max-width: 584px !important;
+  max-width: 584px;
   height: 48px;
   border-radius: 23px;
   border: solid 1px #979797;
@@ -157,14 +157,21 @@ em {
   width: 300px;
 }
 .btns-container button:active, .btns-container button:hover{
-  background: transparent !important;
+  background: transparent;
   border: none;
 }
 #searchbox {
   flex-grow: 0;
   margin-bottom: 8px;
 }
+.nav{
+  z-index: 99;
+}
+.ais-GeoSearch-map>div{
+  top: 76px;
+}
 @media(max-width: 400px) {
+  
     .search-container {
         display: flex;
         flex-direction: column;
@@ -174,13 +181,13 @@ em {
     }
     .search-container > div:first-child{
       position: fixed;
-      height: auto !important;
+      height: auto;
       top: 0px;
       left: 0px;
       z-index: 99;
     }
     .btns-container{
-      background: transparent !important;
+      background: transparent;
     }
     .left-panel+div>div:last-child{
       top: 0px;
@@ -191,7 +198,7 @@ em {
       background: #024172;
   }
   .left-panel+div>div:last-child svg{
-    color: white !important;
+    color: white;
   }
 
     .search-container>.nav>div:nth-child(1),
@@ -210,7 +217,7 @@ em {
 
     .search-container .left-panel>img {
         position: relative;
-        width: 87px !important;
+        width: 87px;
         float: left;
         margin-left: 14px;
     }
@@ -334,10 +341,6 @@ em {
 
 .ais-Hits-item:last-child {
   margin-bottom: 0;
-}
-
-#map {
-  height: 100vh;
 }
 
 .ais-Maps {
