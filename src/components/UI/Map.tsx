@@ -8,10 +8,33 @@ import {
   Marker as OriginalMarker,
 } from "react-instantsearch-dom-maps";
 import styled from "styled-components";
+import { Button } from "react-bootstrap";
 
 import SearchBar from "./SearchBar";
 import { Location } from "./types";
-import Menu from "./Menu";
+
+const FilterButton = styled(Button)`
+  background-color: #fafafa;
+  border: solid 1px #979797;
+  border-radius: 23px;
+  color: #262626;
+  font-weight: bolder;
+  height: 40px;
+  text-transform: uppercase;
+  width: 122px;
+`;
+
+const MapContainer = styled("div")`
+  height: calc(100vh - 76px);
+  width: 100vw;
+
+  @media (min-width: 980px) {
+    position: absolute;
+    right: 0;
+    top: 76px;
+    width: calc(100vw -  430px);
+  }
+`;
 
 const Marker = styled(OriginalMarker)`
   height: 100px;
@@ -32,9 +55,6 @@ const ResultsList = styled("div")`
   // height: calc(100vh - 120px);
   // overflow: scroll;
 
-  @media (max-width: 980px) {
-    top: 80px;
-  }
 
   @media (max-width: 400px) {
     top: 80px;
@@ -64,11 +84,25 @@ type Map = {
 
 type THitComponent = {
   hit: {
-    siteName?: string;
+    city?: string;
+    name?: string;
+    state?: string;
+    streetAddress?: string;
+    zip?: string;
   };
 };
 
-const HitComponent = ({ hit }: THitComponent) => <div>{hit.siteName}</div>;
+const getAddress = (hit: any) => {
+  const { city, streetAddress } = hit;
+  return [streetAddress, city].join(", ");
+};
+
+const HitComponent = ({ hit }: THitComponent) => (
+  <>
+    <div className="hit-name">{hit.name}</div>
+    <div>{getAddress(hit)}</div>
+  </>
+);
 
 export default ({ defaultLocation }: Map) => {
   const [location, setLocation] = useState<Location>(
@@ -97,18 +131,15 @@ export default ({ defaultLocation }: Map) => {
           <div className="search-container">
           <div className="nav">
             <ResultsList className="left-panel">
-              <img
-                alt="Project Ending Hunger Logo"
-                style={{ width: 160 }}
-                src={require("../../assets/images/ProjectEndingHunger.png")}
-              />
-
+              <div className="ais-Hits-item">
+                <FilterButton>Filter</FilterButton>
+              </div>
               <Hits hitComponent={HitComponent} />
             </ResultsList>
-
+            
             <SearchBar setLocation={setLocation} />
           </div>
-            <div className="right-panel">
+            <MapContainer className="right-panel">
               <MapCont id="map">
                 <GeoSearch
                   google={google}
@@ -127,7 +158,7 @@ export default ({ defaultLocation }: Map) => {
                   )}
                 </GeoSearch>
               </MapCont>
-            </div>
+            </MapContainer>
           </div>
         </InstantSearch>
       )}
