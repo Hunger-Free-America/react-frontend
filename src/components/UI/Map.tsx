@@ -25,6 +25,7 @@ const FilterButton = styled(Button)`
 `;
 
 const MapContainer = styled("div")`
+  height: calc(100vh - 76px);
   width: 100vw;
 
   @media (min-width: 980px) {
@@ -79,8 +80,8 @@ type THitComponent = {
 };
 
 const getAddress = (hit: any) => {
-  const { city, state, streetAddress, zip } = hit;
-  return [city, state, streetAddress, zip].join(", ");
+  const { city, streetAddress } = hit;
+  return [streetAddress, city].join(", ");
 };
 
 const HitComponent = ({ hit }: THitComponent) => (
@@ -126,24 +127,22 @@ export default ({ defaultLocation }: Map) => {
             </ResultsList>
             
             <MapContainer className="right-panel">
-              <div id="map">
-                <GeoSearch
-                  google={google}
-                  zoomControlOptions={{
-                    position: google.maps.ControlPosition.RIGHT_TOP,
-                  }}
-                  streetViewControl={true}
-                >
-                  {({ hits }) => (
-                    <div>
-                      <Control />
-                      {hits.map((hit) => (
-                        <Marker key={hit.objectID} hit={hit} />
-                      ))}
-                    </div>
-                  )}
-                </GeoSearch>
-              </div>
+              <GeoSearch
+                google={google}
+                zoomControlOptions={{
+                  position: google.maps.ControlPosition.RIGHT_TOP,
+                }}
+                streetViewControl={true}
+              >
+                {({ hits }) => (
+                  <div>
+                    <Control />
+                    {hits.map((hit) => (
+                      <Marker key={hit.objectID} hit={hit} />
+                    ))}
+                  </div>
+                )}
+              </GeoSearch>
             </MapContainer>
           </div>
         </InstantSearch>
