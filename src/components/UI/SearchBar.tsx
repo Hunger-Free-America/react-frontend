@@ -56,10 +56,10 @@ const NavigationBar = styled("div")`
 
 const SearchBar = styled("div")`
   border-radius: 23px;
-  width: 100%;
-  position: relative;
   height: 48px;
   max-width: 584px;
+  position: relative;
+  width: 100%;
 `;
 
 const BrandLogo = styled("img")`
