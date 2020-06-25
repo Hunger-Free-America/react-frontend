@@ -26,10 +26,11 @@ const StyledButton = styled(Button)`
 interface IProps {
   style?: object;
   title: string;
+  name: string;
 }
 
 const InfoPopover: React.FC<IProps> = (props) => {
-  const { style, title } = props;
+  const { style, title, name } = props;
   const [show, setShow] = useState(false);
   const [target, setTarget] = useState(null);
 
@@ -50,7 +51,7 @@ const InfoPopover: React.FC<IProps> = (props) => {
         rootClose
         onHide={handleClick}
       >
-        <Popover id="popover-contained">
+        <Popover id="popover-contained" className={`pop-over-${name}`}>
           <Popover.Title as="h3">{title}</Popover.Title>
           <Popover.Content>{props.children}</Popover.Content>
         </Popover>
