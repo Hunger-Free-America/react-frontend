@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const getWidth = (size = "medium") => ({ small: "53.5px", medium: "107px", large: "244px" }[size]);
+const getWidth = (size = "medium") => ({ small: "53.5px", medium: "107px", large: "244px" }[size]) || "107px";
 
 interface ButtonProps {
   border?: boolean;
