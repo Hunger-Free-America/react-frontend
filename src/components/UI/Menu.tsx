@@ -1,8 +1,8 @@
 import React from "react";
-import InfoPopover from "./InfoPopover";
 import styled from "styled-components";
-
 import { IoMdMenu } from "react-icons/all";
+import Button from "../common/Button"
+import InfoPopover from "./InfoPopover";
 
 const MenuContainer = styled("div")`
   display: flex;
@@ -23,7 +23,7 @@ const MobileMenu = styled("div")`
 const ButtonsContainer = styled("div")`
   display: flex;
   justify-content: space-around;
-  width: 355px;
+  width: 380px;
 
   & button {
     border: none;
@@ -47,18 +47,20 @@ const ButtonsContainer = styled("div")`
   }
 `;
 
-const LoginButton = styled("button")`
-  background-color: #0093d7;
-  border-radius: 23px;
-  color: #fff;
-  height: 40px;
-  padding-top: 1px;
-  width: 107px;
+const LearnMore = styled.div`
+  color: #0093d7;
+  letter-spacing: 0.75px;
+  font-size: 15px;
+  font-weight: 700;
+  height: 23px;
+  width: 350px;
+`;
 
-  &:active, &:focus, &:hover {
-    background-color: #045f8a;
-    border: none;
-  }
+const FundRaisingButton = styled(Button)`
+  bottom: 40px;
+  margin-top: 30px;
+  position: absolute;
+  right: 40px;
 `;
 
 const AboutInfoPopover = styled(InfoPopover)`
@@ -78,25 +80,19 @@ export default () => (
     >
       <AboutInfoPopover title="About" name="aboutus">
         <p>
-          Darcie is an automated phone line anyone can call to find human
-          services near them, such as free food, legal assistance,
-          non-emergency medical help, and more. Read more and watch a live
-          stream of the conversations at
-          <a href="http://www.darcie.me">darcie.me</a>
-          <br />
-          <b>COVID-19 Update</b> Darcie was intended to pull from all services
-          listed in the
-          <a href="https://sfserviceguide.org/">SF Service Guide</a>, however
-          in the current times the format of the data in that database (a.k.a.
-          <a href="https://github.com/sheltertechsf/askdarcel-api">
-            AskDarcel on github
-          </a>
-          ) made it hard to keep the information up to date with service hours
-          & offerings changing. We pivoted Darcie to pull from a seperate
-          Algolia index which consists of all hygiene stations & places
-          handing out food in SF. The dialog & webhook have been adopted
-          accordingly.
+          For over 30 years, the Souper Bowl of Caring campaign has been a local effort with a collective impact using the energy of the Big Game to tackle hunger.
         </p>
+        <p>
+          Churches, schools and civic groups around the country join in through hosting food and donation campaigns each year that benefit local charities picked by participants.
+        </p>
+        <p>
+          Since 1990, over $163 million has been raised for almost 10,000 local charities around the nation and world.
+        </p>
+        <p>
+          The Souper Bowl of Caring illustrates the importance of a collective impact from local grassroots efforts to tackle hunger.
+        </p>
+        <LearnMore>Learn more about our history</LearnMore>
+        <FundRaisingButton size="large">Start FundRaising</FundRaisingButton>
       </AboutInfoPopover>
       <InfoPopover title="Contact" name="contact">
         <p>
@@ -112,7 +108,7 @@ export default () => (
           <a href="https://twitter.com/dariceshelter">@dariceshelter</a>
         </p>
       </InfoPopover>
-      <LoginButton>Login</LoginButton>
+      <Button>Login</Button>
     </ButtonsContainer>
   </MenuContainer>
 );

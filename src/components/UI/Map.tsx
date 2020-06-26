@@ -1,30 +1,20 @@
-import algoliasearch from "algoliasearch/lite";
-import React, { useState } from "react";
-import { Configure, Hits, InstantSearch } from "react-instantsearch-dom";
-import {
-  GeoSearch,
-  Control,
-  GoogleMapsLoader,
-  Marker as OriginalMarker,
-} from "react-instantsearch-dom-maps";
 import styled from "styled-components";
-import { Button } from "react-bootstrap";
+import React, { useState } from "react";
+import algoliasearch from "algoliasearch/lite";
+import { Configure, Hits, InstantSearch } from "react-instantsearch-dom";
+import { Control, GeoSearch, GoogleMapsLoader, Marker as OriginalMarker } from "react-instantsearch-dom-maps";
 
-import SearchBar from "./SearchBar";
+import TopBar from "./TopBar";
 import { Location } from "./types";
+import FilterButton from "../common/Button";
 
-const FilterButton = styled(Button)`
-  background-color: #fafafa;
-  border: solid 1px #979797;
-  border-radius: 23px;
-  color: #262626;
-  font-weight: bolder;
-  height: 40px;
-  text-transform: uppercase;
-  width: 122px;
+const Marker = styled(OriginalMarker)`
+  height: 100px;
+  width: 100px;
+  background: black;
 `;
 
-const MapContainer = styled("div")`
+const MapContainer = styled.div`
   height: calc(100vh - 76px);
   width: 100vw;
 
@@ -36,13 +26,7 @@ const MapContainer = styled("div")`
   }
 `;
 
-const Marker = styled(OriginalMarker)`
-  height: 100px;
-  width: 100px;
-  background: black;
-`;
-
-const ResultsList = styled("div")`
+const ResultsList = styled.div`
   display: none;
 
   @media (min-width: 980px) {
@@ -59,11 +43,17 @@ const ResultsList = styled("div")`
   }
 `;
 
-const searchClient = algoliasearch(
-  process.env.REACT_APP_ALGOLIA_APPLICATION_ID!,
-  process.env.REACT_APP_ALGOLIA_READ_ONLY_API_KEY!
-);
 const US_LOCATION = { lat: 40.413993, lng: -99.034504 };
+const {
+  REACT_APP_ALGOLIA_APPLICATION_ID,
+  REACT_APP_ALGOLIA_INDEX,
+  REACT_APP_ALGOLIA_READ_ONLY_API_KEY,
+  REACT_APP_GOOGLE_MAPS_API_KEY,
+} = process.env;
+const searchClient = algoliasearch(
+  REACT_APP_ALGOLIA_APPLICATION_ID!,
+  REACT_APP_ALGOLIA_READ_ONLY_API_KEY!
+);
 
 type Map = {
   defaultLocation?: Location;
@@ -98,13 +88,13 @@ export default ({ defaultLocation }: Map) => {
 
   return (
     <GoogleMapsLoader
-      apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
-      endpoint={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places`}
+      apiKey={REACT_APP_GOOGLE_MAPS_API_KEY}
+      endpoint={`https://maps.googleapis.com/maps/api/js?key=${REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places`}
     >
       {(google: any) => (
         <InstantSearch
           searchClient={searchClient}
-          indexName={process.env.REACT_APP_ALGOLIA_INDEX!}
+          indexName={REACT_APP_ALGOLIA_INDEX!}
         >
           {location ? (
             <Configure
@@ -117,16 +107,16 @@ export default ({ defaultLocation }: Map) => {
 
           <div className="search-container">
 
-            <SearchBar setLocation={setLocation} />
+            <TopBar setLocation={setLocation} />
 
-            <ResultsList className="left-panel">
+            <ResultsList>
               <div className="ais-Hits-item">
-                <FilterButton>Filter</FilterButton>
+                <FilterButton primary border width="122px">Filter</FilterButton>
               </div>
               <Hits hitComponent={HitComponent} />
             </ResultsList>
             
-            <MapContainer className="right-panel">
+            <MapContainer>
               <GeoSearch
                 google={google}
                 zoomControlOptions={{

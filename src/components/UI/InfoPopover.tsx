@@ -1,26 +1,27 @@
-import React, { useState } from "react";
-import { Button, Overlay, Popover } from "react-bootstrap";
 import styled from "styled-components";
+import React, { useState } from "react";
+import { Overlay, Popover } from "react-bootstrap";
+import Button from "../common/Button";
 
-const ButtonContainer = styled("div")``;
+const Title = styled.div`
+  color: #333f48;
+  letter-spacing: 0.36px;
+  font-size: 24px;
+  font-weight: 700;
+  height: 47px;
+  width: 244px;
+`;
 
-const StyledButton = styled(Button)`
-  background: transparent;
-  border-radius: 23px;
-  color: #262626;
-  padding-top: 9px;
-
-  &:active, &:focus, &:hover {
-    background: #f6f6f6;
-    border: none;
-    color: #000000;
-    height: 40px;
-  }
-
-  @media (max-width: 400px) {
-    width: 100%;
-    margin-bottom: 20px;
-  }
+const Content = styled.div`
+  color: #333f48;
+  letter-spacing: 0.31px;
+  line-height: 1.15;
+  font-size: 15px;
+  font-weight: 400;
+  height: 379px;
+  padding-right: 11px;
+  text-align: justify;
+  width: 448px;
 `;
 
 interface IProps {
@@ -30,7 +31,7 @@ interface IProps {
 }
 
 const InfoPopover: React.FC<IProps> = (props) => {
-  const { style, title, name } = props;
+  const { title, name } = props;
   const [show, setShow] = useState(false);
   const [target, setTarget] = useState(null);
 
@@ -40,10 +41,8 @@ const InfoPopover: React.FC<IProps> = (props) => {
   };
 
   return (
-    <ButtonContainer style={style}>
-      <StyledButton variant="secondary" onClick={handleClick}>
-        {title}
-      </StyledButton>
+    <>
+      <Button primary onClick={handleClick}>{title}</Button>
       <Overlay
         show={show}
         target={target}
@@ -52,11 +51,13 @@ const InfoPopover: React.FC<IProps> = (props) => {
         onHide={handleClick}
       >
         <Popover id="popover-contained" className={`pop-over-${name}`}>
-          <Popover.Title as="h3">{title}</Popover.Title>
-          <Popover.Content>{props.children}</Popover.Content>
+          <Popover.Content>
+            <Title>{`${title} Us`}</Title>
+            <Content>{props.children}</Content>
+          </Popover.Content>
         </Popover>
       </Overlay>
-    </ButtonContainer>
+    </>
   );
 };
 
