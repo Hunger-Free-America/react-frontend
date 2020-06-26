@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { GoogleApiWrapper } from "google-maps-react";
 
-import SearchBar from './SearchBar';
+import TopBar from './TopBar';
 
 export default {
-  title: 'SearchBar',
-  component: SearchBar,
+  title: 'TopBar',
+  component: TopBar,
 };
 
 const wrapWithGoogleApi = (Component) => (
@@ -21,4 +21,4 @@ const Container = wrapWithGoogleApi(({ Child }) => {
   return <Child location={location} setLocation={setLocation} />
 })
 
-export const Default = () => <Container Child={SearchBar} />
+export const Default = () => <Container Child={TopBar} />
