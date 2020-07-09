@@ -11,4 +11,4 @@ const BrandLogo = styled.img`
   }
 `;
 
-export default () => <BrandLogo alt="Project Ending Hunger Logo" src={logo} />;
+export default () => <BrandLogo alt="Hunger Free America Logo" src={logo} />;
