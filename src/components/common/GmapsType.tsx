@@ -1,13 +1,16 @@
 import React from "react"
 
-import gov from "../../assets/gov.png"
 import { Icon } from "./interface/Icon"
 import { PlaceIcon } from "./PlaceIcon"
-import govRed from "../../assets/govRed.png"
-import school from "../../assets/school.png"
-import worship from "../../assets/worship.png"
-import schoolRed from "../../assets/schoolRed.png"
-import worshipRed from "../../assets/worshipRed.png"
+
+import generic from "../../assets/genericIcon.svg"
+import genericSelected from "../../assets/genericIconSelected.svg"
+import gov from "../../assets/govIcon.svg"
+import govSelected from "../../assets/govIconSelected.svg"
+import school from "../../assets/schoolIcon.svg"
+import schoolSelected from "../../assets/schoolIconSelected.svg"
+import worship from "../../assets/worshipIcon.svg"
+import worshipSelected from "../../assets/worshipIconSelected.svg"
 
 export const GmapsTypeIcon = ({
   allGmapsTypes,
@@ -15,26 +18,24 @@ export const GmapsTypeIcon = ({
   selectedPin,
 }: Icon) => {
   switch (allGmapsTypes ? allGmapsTypes[0] : "") {
-    case "school":
-    case "primary_school":
+    case "school" || "primary_school":
       return (
         <>
           <PlaceIcon
             alt="School"
             icon={school}
-            redIcon={schoolRed}
+            redIcon={schoolSelected}
             selectedPin={selectedPin}
           />
           {includeText && <span>School</span>}
         </>
       )
-    case "church":
-    case "place_of_worship":
+    case "church" || "place_of_worship":
       return (
         <>
           <PlaceIcon
             icon={worship}
-            redIcon={worshipRed}
+            redIcon={worshipSelected}
             alt="Place of worship"
             selectedPin={selectedPin}
           />
@@ -47,22 +48,22 @@ export const GmapsTypeIcon = ({
           <PlaceIcon
             icon={gov}
             alt="Government"
-            redIcon={govRed}
+            redIcon={govSelected}
             selectedPin={selectedPin}
           />
-          {includeText && <span>Government Building - Food Pantry</span>}
+          {includeText && <span>Government Building</span>}
         </>
       )
     default:
       return (
         <>
           <PlaceIcon
-            icon={gov}
-            alt="Government"
-            redIcon={govRed}
+            icon={generic}
+            alt="Generic Charity Site"
+            redIcon={genericSelected}
             selectedPin={selectedPin}
           />
-          {includeText && <span>Government Building - Food Pantry</span>}
+          {includeText && <span>Generic Charity Site</span>}
         </>
       )
   }

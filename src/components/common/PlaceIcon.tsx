@@ -15,7 +15,7 @@ interface IconProps {
 }
 
 const Icon = styled.img<IconProps>`
-  width: ${({ width }) => (width ? width : "20px")};
+  width: ${({ width }) => (width ? width : "26px")};
 `
 
 export const PlaceIcon = ({
