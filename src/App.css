@@ -155,9 +155,12 @@ em {
   padding: 0;
 }
 
+.ais-Hits-list:last-child {
+  margin-bottom: 0;
+}
+
 .ais-Hits-item {
   border-bottom: 1px solid lightgray;
-  padding: 17.5px 30px;
   text-align: left;
 }
 
@@ -181,6 +184,7 @@ em {
 
 .ais-Hits-item:last-child {
   margin-bottom: 0;
+  border-bottom: none;
 }
 
 .ais-Hits-item,
@@ -209,4 +213,92 @@ footer {
   height: 490px;
   max-width: 532px;
   padding: 40px 40px;
+}
+
+#map-popover {
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.4);
+  color: #333f48;
+  line-height: 1.15;
+  font-size: 15px;
+  font-weight: 400;
+  height: 509px;
+  max-width: 410px;
+  text-align: justify;
+  width: 410px;
+}
+
+.map-popover__info {
+  padding: calc(30px - .5rem) calc(30px - .75rem);
+}
+
+.map-popover__address {
+  height: 23px;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.75px;
+  color: #262626;
+}
+
+.map-popover__get-directions {
+  color: #0093d7;
+  cursor: pointer;
+  font-size: 15px;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: bold;
+  height: 23px;
+  margin-bottom: 12px;
+  letter-spacing: 0.75px;
+  line-height: normal;
+}
+
+.map-popover__need {
+  align-items: center;
+  color: #262626;
+  display: flex;
+  font-size: 15px;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: normal;
+  height: 23px;
+  letter-spacing: 0.75px;
+  line-height: normal;
+  margin-bottom: 34px;
+}
+
+.map-popover__need span {
+  margin-left: 10px;
+}
+
+.map-popover__host-a-food-drive {
+  color: #0093d7;
+  cursor: pointer;
+  font-size: 16px;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: bold;
+  height: 23px;
+  letter-spacing: 0.8px;
+  line-height: normal;
+  text-transform: uppercase;
+  width: 205px;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.place__info-eligibility {
+  margin-bottom: 20px;
+}
+
+.place__info-times {
+  margin-bottom: 20px;
+}
+
+.place__info-contact {
+  margin-bottom: 20px;
 }
