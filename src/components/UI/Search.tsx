@@ -83,7 +83,7 @@ export default ({ setLocation }: SearchProps) => {
               <InputGroup>
                 <FormControl
                   id="location"
-                  placeholder="Enter Charity Name, Address, City, or Zip Code"
+                  placeholder="Enter any Place, Address, City, or Zip"
                   {...getInputProps()}
                 />
               </InputGroup>

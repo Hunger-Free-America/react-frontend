@@ -17,7 +17,7 @@ export const Pin = ({ allGmapsTypes, selectedPin }: PinProps) => {
     case "school" || "primary_school":
       return (
         <PlaceIcon
-          width="30px"
+          width="28px"
           alt="School"
           icon={schoolPin}
           redIcon={schoolPinSelected}
@@ -27,7 +27,7 @@ export const Pin = ({ allGmapsTypes, selectedPin }: PinProps) => {
     case "church" || "place_of_worship":
       return (
         <PlaceIcon
-          width="30px"
+          width="28px"
           icon={worshipPin}
           alt="Place of worship"
           redIcon={worshipPinSelected}
@@ -37,7 +37,7 @@ export const Pin = ({ allGmapsTypes, selectedPin }: PinProps) => {
     case "establishment":
       return (
         <PlaceIcon
-          width="30px"
+          width="28px"
           icon={govPin}
           alt="Government"
           redIcon={govPinSelected}
@@ -47,7 +47,7 @@ export const Pin = ({ allGmapsTypes, selectedPin }: PinProps) => {
     default:
       return (
         <PlaceIcon
-          width="30px"
+          width="28px"
           alt="Generic Charity Site"
           icon={genericPin}
           redIcon={genericPinSelected}
