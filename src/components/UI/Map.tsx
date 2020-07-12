@@ -11,9 +11,10 @@ import {
 import TopBar from "./TopBar"
 import Marker from "./Marker"
 import { Location } from "./types"
-import FilterButton from "../common/Button"
 import { HitComponent } from "../common/Hit"
+import filterIcon from "../../assets/filter.png"
 import LocationProvider from "../../contexts/LocationContext"
+import { IconButton as FilterButton } from "../common/Button"
 
 const MapContainer = styled.div`
   height: calc(100vh - 76px);
@@ -106,7 +107,12 @@ export default ({ defaultLocation }: Map) => {
               <TopBar setLocation={setLocation} />
 
               <Filter>
-                <FilterButton primary border width="122px">
+                <FilterButton
+                  border
+                  primary
+                  width="122px"
+                  alt="filter"
+                  src={filterIcon}>
                   Filter
                 </FilterButton>
               </Filter>
