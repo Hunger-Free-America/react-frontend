@@ -3,9 +3,11 @@ import React from "react"
 import { PlaceIcon } from "./PlaceIcon"
 import govPin from "../../assets/pins/govPin.png"
 import { Icon as PinProps } from "./interface/Icon"
+import defaultPin from "../../assets/pins/default.png"
 import govPinRed from "../../assets/pins/govPinRed.png"
 import schoolPin from "../../assets/pins/schoolPin.png"
 import worshipPin from "../../assets/pins/worshipPin.png"
+import defaultPinRed from "../../assets/pins/defaultRed.png"
 import schoolPinRed from "../../assets/pins/schoolPinRed.png"
 import worshipPinRed from "../../assets/pins/worshipPinRed.png"
 
@@ -47,9 +49,9 @@ export const Pin = ({ allGmapsTypes, selectedPin }: PinProps) => {
       return (
         <PlaceIcon
           width="30px"
-          icon={govPin}
-          alt="Government"
-          redIcon={govPinRed}
+          alt="Default"
+          icon={defaultPin}
+          redIcon={defaultPinRed}
           selectedPin={selectedPin}
         />
       )
