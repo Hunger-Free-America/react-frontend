@@ -49,6 +49,7 @@ const InfoPopover: React.FC<IProps> = (props) => {
         placement="bottom"
         rootClose
         onHide={handleClick}
+        transition={false}
       >
         <Popover id="popover-contained" className={`pop-over-${name}`}>
           <Popover.Content>

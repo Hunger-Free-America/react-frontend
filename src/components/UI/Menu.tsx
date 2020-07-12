@@ -1,8 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { IoMdMenu } from "react-icons/all";
-import Button from "../common/Button"
-import InfoPopover from "./InfoPopover";
+import React from "react"
+import styled from "styled-components"
+import { IoMdMenu } from "react-icons/all"
+import InfoPopover from "./InfoPopover"
 
 const MenuContainer = styled("div")`
   display: flex;
@@ -12,13 +11,13 @@ const MenuContainer = styled("div")`
   @media (max-width: 400px) {
     top: 80px;
   }
-`;
+`
 
 const MobileMenu = styled("div")`
   @media (min-width: 400px) {
     display: none;
   }
-`;
+`
 
 const ButtonsContainer = styled("div")`
   display: flex;
@@ -45,7 +44,7 @@ const ButtonsContainer = styled("div")`
     background: white;
     padding: 20px;
   }
-`;
+`
 
 const LearnMore = styled.div`
   color: #0093d7;
@@ -54,20 +53,13 @@ const LearnMore = styled.div`
   font-weight: 700;
   height: 23px;
   width: 350px;
-`;
-
-const FundRaisingButton = styled(Button)`
-  bottom: 40px;
-  margin-top: 30px;
-  position: absolute;
-  right: 40px;
-`;
+`
 
 const AboutInfoPopover = styled(InfoPopover)`
   @media (min-width: 400px) {
     margin-right: 10px;
   }
-`;
+`
 
 export default () => (
   <MenuContainer>
@@ -75,24 +67,27 @@ export default () => (
       <IoMdMenu />
     </MobileMenu>
 
-    <ButtonsContainer
-      className="btns-container"
-    >
+    <ButtonsContainer className="btns-container">
       <AboutInfoPopover title="About" name="aboutus">
         <p>
-          For over 30 years, the Souper Bowl of Caring campaign has been a local effort with a collective impact using the energy of the Big Game to tackle hunger.
+          For over 30 years, the Souper Bowl of Caring campaign has been a local
+          effort with a collective impact using the energy of the Big Game to
+          tackle hunger.
         </p>
         <p>
-          Churches, schools and civic groups around the country join in through hosting food and donation campaigns each year that benefit local charities picked by participants.
+          Churches, schools and civic groups around the country join in through
+          hosting food and donation campaigns each year that benefit local
+          charities picked by participants.
         </p>
         <p>
-          Since 1990, over $163 million has been raised for almost 10,000 local charities around the nation and world.
+          Since 1990, over $163 million has been raised for almost 10,000 local
+          charities around the nation and world.
         </p>
         <p>
-          The Souper Bowl of Caring illustrates the importance of a collective impact from local grassroots efforts to tackle hunger.
+          The Souper Bowl of Caring illustrates the importance of a collective
+          impact from local grassroots efforts to tackle hunger.
         </p>
         <LearnMore>Learn more about our history</LearnMore>
-        <FundRaisingButton size="large">Start FundRaising</FundRaisingButton>
       </AboutInfoPopover>
       <InfoPopover title="Contact" name="contact">
         <p>
@@ -104,11 +99,12 @@ export default () => (
             Github
           </a>{" "}
           <br />
-          Twitter{" "}
-          <a href="https://twitter.com/dariceshelter">@dariceshelter</a>
+          Twitter <a href="https://twitter.com/dariceshelter">@dariceshelter</a>
         </p>
       </InfoPopover>
-      <Button>Login</Button>
+      <InfoPopover title="Volunteer" name="volunteer">
+        <p>Coming soon</p>
+      </InfoPopover>
     </ButtonsContainer>
   </MenuContainer>
-);
+)
