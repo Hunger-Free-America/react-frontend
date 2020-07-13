@@ -9,10 +9,10 @@ jobs:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     env:
-      REACT_APP_GOOGLE_MAPS_API_KEY: ${{ secrets.REACT_APP_GOOGLE_MAPS_API_KEY }}
-      REACT_APP_ALGOLIA_APPLICATION_ID: ${{ secrets.REACT_APP_ALGOLIA_APPLICATION_ID }}
-      REACT_APP_ALGOLIA_READ_ONLY_API_KEY: ${{ secrets.REACT_APP_ALGOLIA_READ_ONLY_API_KEY }}
-      REACT_APP_ALGOLIA_INDEX: ${{ secrets.REACT_APP_ALGOLIA_INDEX }}
+      REACT_APP_GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+      REACT_APP_ALGOLIA_APPLICATION_ID: ${{ secrets.ALGOLIA_APPLICATION_ID }}
+      REACT_APP_ALGOLIA_READ_ONLY_API_KEY: ${{ secrets.ALGOLIA_READ_ONLY_API_KEY }}
+      REACT_APP_ALGOLIA_INDEX: ${{ secrets.ALGOLIA_INDEX }}
     steps:
     - name: Checkout GitHub Action
       uses: actions/checkout@v2
