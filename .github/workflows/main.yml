@@ -1,9 +1,5 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CD-CD
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
     branches: master
@@ -24,9 +20,7 @@ jobs:
     - name: Deploy to Cloudflare Workers with Wrangler
       uses: cloudflare/wrangler-action@1.2.0
       with:
-        # Your Cloudflare API Token
         apiToken: ${{ secrets.CF_API_TOKEN }}
-        # A new line deliminated string of environment variable names that should be configured as Worker secrets
         secrets: |
             GOOGLE_MAPS_API_KEY
             ALGOLIA_APPLICATION_ID
