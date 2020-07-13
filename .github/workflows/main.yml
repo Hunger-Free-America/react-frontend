@@ -6,9 +6,7 @@ name: CD-CD
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches: master
 
 jobs:
   build_and_deploy_job:
