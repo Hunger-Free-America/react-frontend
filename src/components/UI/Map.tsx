@@ -66,14 +66,14 @@ const ResultsList = styled.div`
 
 const US_LOCATION = { lat: 40.413993, lng: -99.034504 }
 const {
-  ALGOLIA_APPLICATION_ID,
-  ALGOLIA_INDEX,
-  ALGOLIA_READ_ONLY_API_KEY,
-  GOOGLE_MAPS_API_KEY,
+  REACT_APP_ALGOLIA_APPLICATION_ID,
+  REACT_APP_ALGOLIA_INDEX,
+  REACT_APP_ALGOLIA_READ_ONLY_API_KEY,
+  REACT_APP_GOOGLE_MAPS_API_KEY,
 } = process.env
 const searchClient = algoliasearch(
-  ALGOLIA_APPLICATION_ID!,
-  ALGOLIA_READ_ONLY_API_KEY!
+  REACT_APP_ALGOLIA_APPLICATION_ID!,
+  REACT_APP_ALGOLIA_READ_ONLY_API_KEY!
 )
 
 type Map = {
@@ -88,12 +88,12 @@ export default ({ defaultLocation }: Map) => {
   return (
     <LocationProvider>
       <GoogleMapsLoader
-        apiKey={GOOGLE_MAPS_API_KEY}
-        endpoint={`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=places`}>
+        apiKey={REACT_APP_GOOGLE_MAPS_API_KEY}
+        endpoint={`https://maps.googleapis.com/maps/api/js?key=${REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places`}>
         {(google: any) => (
           <InstantSearch
             searchClient={searchClient}
-            indexName={ALGOLIA_INDEX!}>
+            indexName={REACT_APP_ALGOLIA_INDEX!}>
             {location ? (
               <Configure
                 aroundLatLng={`${location.lat}, ${location.lng}`}
