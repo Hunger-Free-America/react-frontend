@@ -2,6 +2,8 @@
 
 A map for anyone in need to find food near them, hosted by [HungerFreeAmerica](https://hungerfreeamerica.org/)
 
+It is live at [projectendinghunger.org](https://projectendinghunger.org/)
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -46,8 +48,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ## Pushing to Production
 
 This project has Github Actions set up to auto-deploy to [Cloudflare Workers](https://workers.cloudflare.com/) on pushed to the `master` branch.
-
-It is live at [projectendinghunger.org](https://projectendinghunger.org/)
 
 Contact Max<maxastuart@gmail.com> for more details.
 
