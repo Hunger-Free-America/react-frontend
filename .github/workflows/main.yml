@@ -1,0 +1,41 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CD-CD
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build_and_deploy_job:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout GitHub Action
+      uses: actions/checkout@v2
+    - name: Setup Node Environment
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - name: Resolve Project Dependencies Using yarn
+      run: yarn && yarn build
+    - name: Deploy to Cloudflare Workers with Wrangler
+      uses: cloudflare/wrangler-action@1.2.0
+      with:
+        # Your Cloudflare API Token
+        apiToken: ${{ secrets.CF_API_TOKEN }}
+        # A new line deliminated string of environment variable names that should be configured as Worker secrets
+        secrets: |
+            GOOGLE_MAPS_API_KEY
+            ALGOLIA_APPLICATION_ID
+            ALGOLIA_READ_ONLY_API_KEY
+            ALGOLIA_INDEX
+      env:
+        GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+        ALGOLIA_APPLICATION_ID: ${{ secrets.ALGOLIA_APPLICATION_ID }}
+        ALGOLIA_READ_ONLY_API_KEY: ${{ secrets.ALGOLIA_READ_ONLY_API_KEY }}
+        ALGOLIA_INDEX: ${{ secrets.ALGOLIA_INDEX }}
