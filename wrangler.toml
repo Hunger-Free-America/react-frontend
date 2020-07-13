@@ -1,0 +1,12 @@
+name = "map"
+type = "webpack"
+account_id = "9a528f69de44167d6e10333ab59f7b23"
+workers_dev = true
+
+[site]
+bucket = "./build"
+entry-point = "workers-site"
+
+[env.production]
+route = "projectendinghunger.org/*"
+zone_id = "f28d8d314d8752e92d6afe3fc1cdb7cd"
