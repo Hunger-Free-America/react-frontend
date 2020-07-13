@@ -53,7 +53,7 @@ const InfoPopover: React.FC<IProps> = (props) => {
       >
         <Popover id="popover-contained" className={`pop-over-${name}`}>
           <Popover.Content>
-            <Title>{`${title} Us`}</Title>
+            <Title>{`${title}`}</Title>
             <Content>{props.children}</Content>
           </Popover.Content>
         </Popover>

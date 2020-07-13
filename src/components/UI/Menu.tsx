@@ -1,7 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import { IoMdMenu } from "react-icons/all"
-import InfoPopover from "./InfoPopover"
+// import InfoPopover from "./InfoPopover"
+import MenuButton from '../common/MenuButton'
 
 const MenuContainer = styled("div")`
   display: flex;
@@ -46,20 +47,20 @@ const ButtonsContainer = styled("div")`
   }
 `
 
-const LearnMore = styled.div`
-  color: #0093d7;
-  letter-spacing: 0.75px;
-  font-size: 15px;
-  font-weight: 700;
-  height: 23px;
-  width: 350px;
-`
+// const LearnMore = styled.div`
+//   color: #0093d7;
+//   letter-spacing: 0.75px;
+//   font-size: 15px;
+//   font-weight: 700;
+//   height: 23px;
+//   width: 350px;
+// `
 
-const AboutInfoPopover = styled(InfoPopover)`
-  @media (min-width: 400px) {
-    margin-right: 10px;
-  }
-`
+// const AboutInfoPopover = styled(InfoPopover)`
+//   @media (min-width: 400px) {
+//     margin-right: 10px;
+//   }
+// `
 
 export default () => (
   <MenuContainer>
@@ -68,7 +69,10 @@ export default () => (
     </MobileMenu>
 
     <ButtonsContainer className="btns-container">
-      <AboutInfoPopover title="About" name="aboutus">
+      <MenuButton title='About' href='https://www.hungerfreeamerica.org/about'/>
+      <MenuButton title='Contact' href='https://www.hungerfreeamerica.org/about/contact-us'/>
+      <MenuButton title='Volunteer' href='https://www.hungerfreeamerica.org/hv'/>
+      {/* <AboutInfoPopover title="About" name="aboutus">
         <p>
           For over 30 years, the Souper Bowl of Caring campaign has been a local
           effort with a collective impact using the energy of the Big Game to
@@ -104,7 +108,7 @@ export default () => (
       </InfoPopover>
       <InfoPopover title="Volunteer" name="volunteer">
         <p>Coming soon</p>
-      </InfoPopover>
+      </InfoPopover> */}
     </ButtonsContainer>
   </MenuContainer>
 )

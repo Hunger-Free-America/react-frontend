@@ -1,20 +1,20 @@
-import styled from "styled-components";
-import React, { useState } from "react";
-import algoliasearch from "algoliasearch/lite";
-import { Configure, Hits, InstantSearch } from "react-instantsearch-dom";
+import styled from "styled-components"
+import React, { useState } from "react"
+import algoliasearch from "algoliasearch/lite"
+import { Configure, Hits, InstantSearch } from "react-instantsearch-dom"
 import {
   Control,
   GeoSearch,
   GoogleMapsLoader,
-} from "react-instantsearch-dom-maps";
+} from "react-instantsearch-dom-maps"
 
-import TopBar from "./TopBar";
-import Marker from "./Marker";
-import { Location } from "./types";
-import { HitComponent } from "../common/Hit";
-import filterIcon from "../../assets/filter.png";
-import LocationProvider from "../../contexts/LocationContext";
-import { IconButton as FilterButton } from "../common/Button";
+import TopBar from "./TopBar"
+import Marker from "./Marker"
+import { Location } from "./types"
+import { HitComponent } from "../common/Hit"
+import filterIcon from "../../assets/filter.png"
+import LocationProvider from "../../contexts/LocationContext"
+import { IconButton as FilterButton } from "../common/Button"
 
 const MapContainer = styled.div`
   height: calc(100vh - 76px);
@@ -26,7 +26,7 @@ const MapContainer = styled.div`
     top: 76px;
     width: calc(100vw - 430px);
   }
-`;
+`
 
 const Filter = styled.div`
   display: none;
@@ -46,7 +46,7 @@ const Filter = styled.div`
     width: 430px;
     z-index: 500;
   }
-`;
+`
 const ResultsList = styled.div`
   display: none;
 
@@ -62,28 +62,28 @@ const ResultsList = styled.div`
     width: 430px;
     z-index: 500;
   }
-`;
+`
 
-const US_LOCATION = { lat: 40.413993, lng: -99.034504 };
+const US_LOCATION = { lat: 40.413993, lng: -99.034504 }
 const {
   ALGOLIA_APPLICATION_ID,
   ALGOLIA_INDEX,
   ALGOLIA_READ_ONLY_API_KEY,
   GOOGLE_MAPS_API_KEY,
-} = process.env;
+} = process.env
 const searchClient = algoliasearch(
   ALGOLIA_APPLICATION_ID!,
   ALGOLIA_READ_ONLY_API_KEY!
-);
+)
 
 type Map = {
-  defaultLocation?: Location;
-};
+  defaultLocation?: Location
+}
 
 export default ({ defaultLocation }: Map) => {
   const [location, setLocation] = useState<Location>(
     defaultLocation || US_LOCATION
-  );
+  )
 
   return (
     <LocationProvider>
@@ -100,8 +100,8 @@ export default ({ defaultLocation }: Map) => {
                 aroundRadius="all"
               />
             ) : (
-                <Configure aroundLatLngViaIP />
-              )}
+              <Configure aroundLatLngViaIP />
+            )}
 
             <div className="search-container">
               <TopBar setLocation={setLocation} />
@@ -142,5 +142,5 @@ export default ({ defaultLocation }: Map) => {
         )}
       </GoogleMapsLoader>
     </LocationProvider>
-  );
-};
+  )
+}
