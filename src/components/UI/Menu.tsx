@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { IoMdMenu } from "react-icons/all"
 // import InfoPopover from "./InfoPopover"
 import MenuButton from '../common/MenuButton'
+import { Navbar } from 'react-bootstrap'
 
 const MenuContainer = styled("div")`
   display: flex;
@@ -10,20 +11,24 @@ const MenuContainer = styled("div")`
   margin-left: 0px;
 
   @media (max-width: 400px) {
-    top: 80px;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    padding: .75rem;
   }
 `
 
 const MobileMenu = styled("div")`
-  @media (min-width: 400px) {
-    display: none;
-  }
+  position: absolute;
+  padding: .5rem .75rem;
+  right: 0;
+  top: 0;
 `
 
 const ButtonsContainer = styled("div")`
   display: flex;
   justify-content: space-around;
-  width: 380px;
+  right: 0;
 
   & button {
     border: none;
@@ -35,11 +40,12 @@ const ButtonsContainer = styled("div")`
   }
 
   @media (max-width: 400px) {
-    position: fixed;
-    top: 120px;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    // display: block;
+    // top: 7rem;
+    // left: -18rem;
+    // width: 300px;
+    // height: 100%;
+    bottom: 0;
     z-index: 1000;
 
     background: white;
@@ -63,52 +69,54 @@ const ButtonsContainer = styled("div")`
 // `
 
 export default () => (
-  <MenuContainer>
-    <MobileMenu>
-      <IoMdMenu />
-    </MobileMenu>
+  <>
+      <MobileMenu>
+        <Navbar.Toggle aria-controls="collapsable"/>
+      </MobileMenu>
+      <Navbar.Collapse className="flex-grow-0" id="collapsable">
+        <ButtonsContainer>
 
-    <ButtonsContainer className="btns-container">
-      <MenuButton title='About' href='https://www.hungerfreeamerica.org/about'/>
-      <MenuButton title='Contact' href='https://www.hungerfreeamerica.org/about/contact-us'/>
-      <MenuButton title='Volunteer' href='https://www.hungerfreeamerica.org/hv'/>
-      {/* <AboutInfoPopover title="About" name="aboutus">
-        <p>
-          For over 30 years, the Souper Bowl of Caring campaign has been a local
-          effort with a collective impact using the energy of the Big Game to
-          tackle hunger.
-        </p>
-        <p>
-          Churches, schools and civic groups around the country join in through
-          hosting food and donation campaigns each year that benefit local
-          charities picked by participants.
-        </p>
-        <p>
-          Since 1990, over $163 million has been raised for almost 10,000 local
-          charities around the nation and world.
-        </p>
-        <p>
-          The Souper Bowl of Caring illustrates the importance of a collective
-          impact from local grassroots efforts to tackle hunger.
-        </p>
-        <LearnMore>Learn more about our history</LearnMore>
-      </AboutInfoPopover>
-      <InfoPopover title="Contact" name="contact">
-        <p>
-          Contributing, Branching, & Forking While we actively accept help, as
-          well as encourage you to fork this repo and build it out for your
-          city, we do not take pull requests directly to this repo - please
-          contact us before you plan to do so. Reach out to: <br />
-          Repo <a href="https://github.com/ShelterTechSF/VACS-MVP">
-            Github
-          </a>{" "}
-          <br />
-          Twitter <a href="https://twitter.com/dariceshelter">@dariceshelter</a>
-        </p>
-      </InfoPopover>
-      <InfoPopover title="Volunteer" name="volunteer">
-        <p>Coming soon</p>
-      </InfoPopover> */}
-    </ButtonsContainer>
-  </MenuContainer>
+          <MenuButton title='About' href='https://www.hungerfreeamerica.org/about'/>
+          <MenuButton title='Contact' href='https://www.hungerfreeamerica.org/about/contact-us'/>
+          <MenuButton title='Volunteer' href='https://www.hungerfreeamerica.org/hv'/>
+        {/* <AboutInfoPopover title="About" name="aboutus">
+          <p>
+            For over 30 years, the Souper Bowl of Caring campaign has been a local
+            effort with a collective impact using the energy of the Big Game to
+            tackle hunger.
+          </p>
+          <p>
+            Churches, schools and civic groups around the country join in through
+            hosting food and donation campaigns each year that benefit local
+            charities picked by participants.
+          </p>
+          <p>
+            Since 1990, over $163 million has been raised for almost 10,000 local
+            charities around the nation and world.
+          </p>
+          <p>
+            The Souper Bowl of Caring illustrates the importance of a collective
+            impact from local grassroots efforts to tackle hunger.
+          </p>
+          <LearnMore>Learn more about our history</LearnMore>
+        </AboutInfoPopover>
+        <InfoPopover title="Contact" name="contact">
+          <p>
+            Contributing, Branching, & Forking While we actively accept help, as
+            well as encourage you to fork this repo and build it out for your
+            city, we do not take pull requests directly to this repo - please
+            contact us before you plan to do so. Reach out to: <br />
+            Repo <a href="https://github.com/ShelterTechSF/VACS-MVP">
+              Github
+            </a>{" "}
+            <br />
+            Twitter <a href="https://twitter.com/dariceshelter">@dariceshelter</a>
+          </p>
+        </InfoPopover>
+        <InfoPopover title="Volunteer" name="volunteer">
+          <p>Coming soon</p>
+        </InfoPopover> */}
+        </ButtonsContainer>
+      </Navbar.Collapse>
+  </>
 )

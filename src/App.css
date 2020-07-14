@@ -42,6 +42,8 @@ em {
   text-decoration: underline;
 }
 
+
+
 .search-container {
   position: relative;
 }
@@ -301,4 +303,11 @@ footer {
 
 .place__info-contact {
   margin-bottom: 20px;
+}
+
+@media (max-width: 400px) {
+  .navbar {
+    padding: 1rem 1rem .5rem !important;
+    align-items: flex-start !important;
+  }
 }

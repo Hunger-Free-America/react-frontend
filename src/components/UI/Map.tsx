@@ -18,12 +18,12 @@ import { IconButton as FilterButton } from "../common/Button"
 
 const MapContainer = styled.div`
   height: calc(100vh - 76px);
-  width: 100vw;
+  // width: 100vw;
 
   @media (min-width: 980px) {
     position: absolute;
     right: 0;
-    top: 76px;
+    top: 71px;
     width: calc(100vw - 430px);
   }
 `
@@ -42,7 +42,7 @@ const Filter = styled.div`
     left: 0;
     position: absolute;
     padding: 17.5px 30px;
-    top: 76px;
+    top: 70px;
     width: 430px;
     z-index: 500;
   }
@@ -54,11 +54,11 @@ const ResultsList = styled.div`
     background: white;
     box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.3);
     display: block;
-    height: calc(100vh - (76px + 92px));
+    height: calc(100vh - (70px + 92px));
     left: 0;
     overflow: scroll;
     position: absolute;
-    top: calc(76px + 92px);
+    top: calc(70px + 92px);
     width: 430px;
     z-index: 500;
   }
