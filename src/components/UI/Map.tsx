@@ -17,7 +17,7 @@ import LocationProvider from "../../contexts/LocationContext"
 import { IconButton as FilterButton } from "../common/Button"
 
 const MapContainer = styled.div`
-  height: calc(100vh - 76px);
+  height: calc(100vh - 71px);
   // width: 100vw;
 
   @media (min-width: 980px) {
@@ -25,6 +25,9 @@ const MapContainer = styled.div`
     right: 0;
     top: 71px;
     width: calc(100vw - 430px);
+  }
+  @media (max-width: 575px) {
+    height: calc(96vh - 76px);
   }
 `
 

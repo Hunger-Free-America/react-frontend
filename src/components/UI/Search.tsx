@@ -2,7 +2,6 @@ import styled from "styled-components";
 import React, { useState } from "react";
 import { Form, InputGroup, FormControl } from "react-bootstrap";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-places-autocomplete";
-import { Navbar } from 'react-bootstrap'
 
 import { SetLocation } from "./types";
 import searchIcon from "../../assets/images/search@3x.png";

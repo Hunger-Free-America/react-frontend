@@ -1,22 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import { IoMdMenu } from "react-icons/all"
 // import InfoPopover from "./InfoPopover"
 import MenuButton from '../common/MenuButton'
 import { Navbar } from 'react-bootstrap'
-
-const MenuContainer = styled("div")`
-  display: flex;
-  justify-content: space-between;
-  margin-left: 0px;
-
-  @media (max-width: 400px) {
-    position: absolute;
-    top: 5px;
-    right: 0;
-    padding: .75rem;
-  }
-`
 
 const MobileMenu = styled("div")`
   position: absolute;

@@ -24,7 +24,9 @@
     "react-icons": "^3.10.0",
     "react-instantsearch": "^6.4.0",
     "react-instantsearch-dom-maps": "^6.4.0",
+    "react-native-elements": "^2.0.4",
     "react-places-autocomplete": "^7.2.1",
+    "react-responsive": "^8.1.0",
     "react-scripts": "^3.4.1",
     "styled-components": "^5.1.0",
     "typescript": "^3.9.5"

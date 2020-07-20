@@ -8,7 +8,7 @@ function App() {
     <div
       className="App"
       style={{
-        height: "100vh",
+        height: "",
         position: "relative",
       }}
     >

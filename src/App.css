@@ -212,7 +212,6 @@ footer {
 #popover-contained {
   background-color: #ffffff;
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.4);
-  height: 490px;
   max-width: 532px;
   padding: 40px 40px;
 }
@@ -223,7 +222,6 @@ footer {
   line-height: 1.15;
   font-size: 15px;
   font-weight: 400;
-  height: 509px;
   max-width: 410px;
   text-align: justify;
   width: 410px;
@@ -234,7 +232,6 @@ footer {
 }
 
 .map-popover__address {
-  height: 23px;
   font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
@@ -251,7 +248,6 @@ footer {
   font-stretch: normal;
   font-style: normal;
   font-weight: bold;
-  height: 23px;
   margin-bottom: 12px;
   letter-spacing: 0.75px;
   line-height: normal;
@@ -265,7 +261,6 @@ footer {
   font-stretch: normal;
   font-style: normal;
   font-weight: normal;
-  height: 23px;
   letter-spacing: 0.75px;
   line-height: normal;
   margin-bottom: 34px;
@@ -282,7 +277,6 @@ footer {
   font-stretch: normal;
   font-style: normal;
   font-weight: bold;
-  height: 23px;
   letter-spacing: 0.8px;
   line-height: normal;
   text-transform: uppercase;
@@ -309,5 +303,9 @@ footer {
   .navbar {
     padding: 1rem 1rem .5rem !important;
     align-items: flex-start !important;
+  }
+  #map-popover {
+    left: -5px!important;
+    max-width: 100%;
   }
 }
