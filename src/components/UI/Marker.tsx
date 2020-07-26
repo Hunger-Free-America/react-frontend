@@ -1,10 +1,7 @@
 import styled from "styled-components"
 import { Popover, Overlay } from "react-bootstrap"
-// import { Overlay } from 'react-native'
 import React, { useContext, useRef, useState } from "react"
 import { CustomMarker } from "react-instantsearch-dom-maps"
-import MediaQuery from 'react-responsive';
-import mediaQuery from 'css-mediaquery';
 
 import { Pin } from "../common/Pin"
 import { GmapsTypeIcon } from "../common/GmapsType"

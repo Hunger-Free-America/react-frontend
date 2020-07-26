@@ -4,11 +4,12 @@ import styled from "styled-components"
 const getWidth = (size = "medium") =>
   ({ small: "53.5px", medium: "107px", large: "244px" }[size] || "107px")
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
   border?: boolean
-  size?: string
   primary?: boolean
   width?: string
+  size?: string
+  toggle?: string
 }
 
 const Button = styled.button<ButtonProps>`
@@ -38,7 +39,6 @@ const Button = styled.button<ButtonProps>`
 
 interface IconButtonProps extends ButtonProps {
   alt?: string
-  children: React.ReactNode
   src: string
 }
 
@@ -53,6 +53,27 @@ export const IconButton = ({
   src,
   ...buttonProps
 }: IconButtonProps) => {
+  return (
+    <Button {...buttonProps}>
+      <Icon alt={alt} src={src} />
+      {children}
+    </Button>
+  )
+}
+
+interface MapListButtonProps extends ButtonProps {
+  alt?: string
+  src: string
+}
+
+export const MapListButton = ({
+  alt,
+  children,
+  src,
+  toggle,
+  ...buttonProps
+}: MapListButtonProps) => {
+  console.log(toggle)
   return (
     <Button {...buttonProps}>
       <Icon alt={alt} src={src} />
