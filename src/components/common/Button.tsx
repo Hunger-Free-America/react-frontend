@@ -9,7 +9,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
   primary?: boolean
   width?: string
   size?: string
-  toggle?: string
+  toggle?: boolean
 }
 
 const Button = styled.button<ButtonProps>`
@@ -73,7 +73,6 @@ export const MapListButton = ({
   toggle,
   ...buttonProps
 }: MapListButtonProps) => {
-  console.log(toggle)
   return (
     <Button {...buttonProps}>
       <Icon alt={alt} src={src} />

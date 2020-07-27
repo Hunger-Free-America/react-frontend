@@ -17,10 +17,10 @@ import mapIcon from "../../assets/map.png"
 import listIcon from "../../assets/list.png"
 import LocationProvider from "../../contexts/LocationContext"
 import { IconButton as FilterButton, MapListButton } from "../common/Button"
+import { useWindowSize } from '../common/MediaQuery';
 
 export const MapContainer = styled.div`
   height: calc(100vh - 71px);
-  // width: 100vw;
 
   @media (min-width: 980px) {
     position: absolute;
@@ -89,11 +89,9 @@ export default ({ defaultLocation }: Map) => {
   const [location, setLocation] = useState<Location>(
     defaultLocation || US_LOCATION
   )
-
-  const mq = window.matchMedia("(max-width: 575px)")
-
-  let [show, setShow] = useState('both')
-  if (mq.matches) [show, setShow] = useState('list')
+  const mq = useWindowSize();
+  const mdScreen = mq.width < 575
+  let [show, setShow] = useState(true)
 
   return (
     <LocationProvider>
@@ -125,19 +123,19 @@ export default ({ defaultLocation }: Map) => {
                   src={filterIcon}>
                   Filter
                 </FilterButton>
-                {mq.matches ? <MapListButton
+                {mdScreen ? <MapListButton
                   border
                   primary
                   width="122px"
                   alt="map/list"
-                  src={show === 'map' ? listIcon : mapIcon}
-                  onClick={() => setShow(show === 'map' ? 'list' : 'map')}
+                  src={show === true ? listIcon : mapIcon}
+                  onClick={() => setShow(!show)}
                   toggle={show} >
-                    {show === 'map' ? 'list' : 'map'}
+                    {show ? 'map' : 'list'}
                   </MapListButton>
                   : <div></div>}
               </Filter>
-              { show === 'both' || show === 'map' ?
+              { !mdScreen || show ?
                <MapContainer>
                 <GeoSearch
                   google={google}
@@ -156,7 +154,7 @@ export default ({ defaultLocation }: Map) => {
                 </GeoSearch>
               </MapContainer>
               : <div></div> }
-              { show === 'both' || show === 'list' ? 
+              { !mdScreen || !show ? 
               <ResultsList>
                 <Hits hitComponent={HitComponent} />
               </ResultsList> : <div></div> }
