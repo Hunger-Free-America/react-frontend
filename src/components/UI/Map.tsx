@@ -21,15 +21,23 @@ import { useWindowSize } from '../common/MediaQuery';
 
 export const MapContainer = styled.div`
   height: calc(100vh - 71px);
+  position: absolute;
+  right: 0;
+  top: 71px;
+  width: calc(100vw - 430px);
+
 
   @media (min-width: 980px) {
-    position: absolute;
-    right: 0;
-    top: 71px;
+    // position: absolute;
+    // right: 0;
+    // top: 71px;
     width: calc(100vw - 430px);
   }
   @media (max-width: 575px) {
+    top: 0;
+    position: relative;
     height: calc(96vh - 76px);
+    width: 100%;
   }
 `
 
@@ -44,7 +52,7 @@ const Filter = styled.div`
   // position: absolute;
   padding: 17.5px 30px;
   top: 70px;
-  width: 430px;
+  width: 414px;
   z-index: 500;
   justify-content: space-between;
 
