@@ -13,54 +13,67 @@ import Marker from "./Marker"
 import { Location } from "./types"
 import { HitComponent } from "../common/Hit"
 import filterIcon from "../../assets/filter.png"
+import mapIcon from "../../assets/map.png"
+import listIcon from "../../assets/list.png"
 import LocationProvider from "../../contexts/LocationContext"
-import { IconButton as FilterButton } from "../common/Button"
+import { IconButton as FilterButton, MapListButton } from "../common/Button"
+import { useWindowSize } from '../common/MediaQuery';
 
-const MapContainer = styled.div`
-  height: calc(100vh - 76px);
-  width: 100vw;
+export const MapContainer = styled.div`
+  height: calc(100vh - 71px);
+  position: absolute;
+  right: 0;
+  top: 71px;
+  width: calc(100vw - 430px);
+
 
   @media (min-width: 980px) {
-    position: absolute;
-    right: 0;
-    top: 76px;
+    // position: absolute;
+    // right: 0;
+    // top: 71px;
     width: calc(100vw - 430px);
+  }
+  @media (max-width: 575px) {
+    top: 0;
+    position: relative;
+    height: calc(96vh - 76px);
+    width: 100%;
   }
 `
 
 const Filter = styled.div`
-  display: none;
+  align-content: center;
+  align-items: center;
+  background: white;
+  border-bottom: 1px solid lightgray;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.3);
+  display: flex;
+  height: 92px;
+  // position: absolute;
+  padding: 17.5px 30px;
+  top: 70px;
+  width: 414px;
+  z-index: 500;
+  justify-content: space-between;
 
-  @media (min-width: 980px) {
-    align-content: center;
-    align-items: center;
-    background: white;
-    border-bottom: 1px solid lightgray;
-    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.3);
-    display: flex;
-    height: 92px;
-    left: 0;
-    position: absolute;
-    padding: 17.5px 30px;
-    top: 76px;
-    width: 430px;
-    z-index: 500;
+  @media (max-width: 575px) {
+    width: 100%;
   }
 `
-const ResultsList = styled.div`
-  display: none;
+export const ResultsList = styled.div`
+  background: white;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.3);
+  display: block;
+  height: calc(100vh - (70px + 92px));
+  overflow: scroll;
+  top: calc(70px + 92px);
+  width: 414px;
+  z-index: 1000;
 
-  @media (min-width: 980px) {
-    background: white;
-    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.3);
-    display: block;
-    height: calc(100vh - (76px + 92px));
-    left: 0;
-    overflow: scroll;
-    position: absolute;
-    top: calc(76px + 92px);
-    width: 430px;
-    z-index: 500;
+  @media (max-width: 575px) {
+    width: 100%;
+    height: calc(100vh - (70px + 150px));
+
   }
 `
 
@@ -84,6 +97,9 @@ export default ({ defaultLocation }: Map) => {
   const [location, setLocation] = useState<Location>(
     defaultLocation || US_LOCATION
   )
+  const mq = useWindowSize();
+  const mdScreen = mq.width < 575
+  let [show, setShow] = useState(true)
 
   return (
     <LocationProvider>
@@ -115,12 +131,20 @@ export default ({ defaultLocation }: Map) => {
                   src={filterIcon}>
                   Filter
                 </FilterButton>
+                {mdScreen ? <MapListButton
+                  border
+                  primary
+                  width="122px"
+                  alt="map/list"
+                  src={show === true ? listIcon : mapIcon}
+                  onClick={() => setShow(!show)}
+                  toggle={show} >
+                    {show ? 'map' : 'list'}
+                  </MapListButton>
+                  : <div></div>}
               </Filter>
-              <ResultsList>
-                <Hits hitComponent={HitComponent} />
-              </ResultsList>
-
-              <MapContainer>
+              { !mdScreen || show ?
+               <MapContainer>
                 <GeoSearch
                   google={google}
                   zoomControlOptions={{
@@ -137,6 +161,11 @@ export default ({ defaultLocation }: Map) => {
                   )}
                 </GeoSearch>
               </MapContainer>
+              : <div></div> }
+              { !mdScreen || !show ? 
+              <ResultsList>
+                <Hits hitComponent={HitComponent} />
+              </ResultsList> : <div></div> }
             </div>
           </InstantSearch>
         )}

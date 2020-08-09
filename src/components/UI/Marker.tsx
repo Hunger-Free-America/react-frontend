@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Overlay, Popover } from "react-bootstrap"
+import { Popover, Overlay } from "react-bootstrap"
 import React, { useContext, useRef, useState } from "react"
 import { CustomMarker } from "react-instantsearch-dom-maps"
 
@@ -34,10 +34,17 @@ const Title = styled.div`
   font-stretch: normal;
   font-style: normal;
   font-weight: bold;
-  height: 23px;
   margin-bottom: 5px;
   line-height: normal;
 `
+const MarkerContainer = styled.div`
+  width: 375px;
+  height: 517px;
+  border-radius: 5px;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.4);
+  background-color: #ffffff;
+`
+
 
 const Marker: React.FC<IProps> = (props) => {
   const ref = useRef(null)
@@ -83,6 +90,12 @@ const Marker: React.FC<IProps> = (props) => {
     selectHit(true)
   }
 
+  const direction = () => {
+    const smallScreen = window.matchMedia('(min-width: 400px)')
+    return smallScreen.matches ? "right" : "bottom-end"
+  }
+
+
   return (
     <div>
       <CustomMarker aria-describedby={id} key={hit.objectID} hit={hit}>
@@ -94,7 +107,7 @@ const Marker: React.FC<IProps> = (props) => {
         rootClose
         show={open}
         target={target}
-        placement="right"
+        placement={direction()}
         transition={false}
         onHide={handleClose}
         container={ref.current}>

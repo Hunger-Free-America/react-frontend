@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 interface IProps {
     buttonStyle?: object;
@@ -18,3 +18,8 @@ const Button: React.FC<IProps> = props => {
 };
 
 export default Button;
+
+
+// access state => Callback in parent Component
+//         toggles state
+// 2. Set state variable in parent component, pass it to child as prop

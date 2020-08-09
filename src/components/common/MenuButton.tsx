@@ -13,7 +13,7 @@ const ButtonLink = styled.a<ButtonProps>`
   color: #171b50;
   font-weight: bold;
   letter-spacing: 0.8px;
-  padding-top: 12px;
+  padding: 12px;
   text-transform: uppercase;
   width: auto;
   text-decoration: none;
@@ -27,7 +27,7 @@ const ButtonLink = styled.a<ButtonProps>`
 
   @media (max-width: 400px) {
     width: 100%;
-    margin-bottom: 20px;
+    padding: .2rem;
   }
 `
 
